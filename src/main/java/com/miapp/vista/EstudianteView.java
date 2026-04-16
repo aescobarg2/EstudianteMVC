@@ -52,6 +52,7 @@ public class EstudianteView extends JFrame {
         btnBuscar.setForeground(Color.WHITE);
         btnBuscar.setFocusPainted(false);
 
+        //Creaccion de boton  de borrar
         btnBorrar = new JButton("Borrar");
         btnBorrar.setBackground(new Color(59, 139, 212));
         btnBorrar.setForeground(Color.WHITE);
@@ -94,7 +95,10 @@ public class EstudianteView extends JFrame {
                 controlador.buscarEstudiante(txtNombre.getText().trim());
             }
         });
-
+        //Asigna accion de borrar bantalla al interactuar
+        btnBorrar.addActionListener((ActionEvent e) ->{
+            borrarPantalla();
+        });
         // También buscar al presionar Enter en el campo de texto
         txtNombre.addActionListener((ActionEvent e) -> btnBuscar.doClick());
     }
@@ -111,6 +115,11 @@ public class EstudianteView extends JFrame {
         setEstado("Se encontró 1 estudiante.");
     }
 
+
+    public void borrarPantalla(){
+        limpiarTabla();
+        setEstado("Se limpio la pantalla.");
+    }
     /**
      * Muestra una lista de estudiantes en la tabla.
      */
@@ -159,7 +168,7 @@ public class EstudianteView extends JFrame {
         });
     }
 
-    private void limpiarTabla() {
+    public void limpiarTabla() {
         modeloTabla.setRowCount(0);
     }
 
